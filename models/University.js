@@ -24,7 +24,7 @@ const University = sequelize.define('university', {
     },
    
     },{
-       timestamps:true,
+       timestamps:false,
        tableName:'university'
     });
 

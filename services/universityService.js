@@ -5,10 +5,12 @@ export const createUniversityService = (body) => {
   return University.create(body)
 };
 
+export const getUniversityById = (id) => {
+  return University.findOne( {where: { university_id:id },raw:true}) 
+};
 
-
-export const updateUser = (id, newUser) => {
-  return University.update(newUser,{where:{id}})
+export const updateUniversityService = (id, body) => {
+  return University.update(body,{where:{university_id:id}})
 };
 
 
