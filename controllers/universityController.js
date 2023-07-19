@@ -1,4 +1,4 @@
-import {createUniversity, createUniversityService} from "../services/universityService.js"
+import { createUniversityService} from "../services/universityService.js"
 
 
 export const createUniversity = (req,res) =>{

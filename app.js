@@ -25,3 +25,6 @@ app.use("/api/v1", routes);
 //   app.listen(PORT, () => {
 //     console.log(`Server started on http://localhost:${PORT}`);
 //   });
+
+
+export default app;

@@ -3,6 +3,6 @@ const universityRouter = express.Router()
 
 import { createUniversity } from '../controllers/universityController.js'
 
-authRouter.post("/university",createUniversity)
+universityRouter.post("/university",createUniversity)
 
 export default universityRouter
