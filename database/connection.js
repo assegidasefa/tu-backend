@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize("ivrdb",'root','Til&123!tek',{
+export const sequelize = new Sequelize("tutor",'root','Til&123!tek',{
     host:"localhost",
     dialect:"mysql",
     pool:{
