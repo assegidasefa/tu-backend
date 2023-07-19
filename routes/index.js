@@ -1,5 +1,6 @@
 import express from 'express'
+import universityRouter from './UniversityRoute'
 const app = express.Router()
 
-app.use('/users', UserRoute)
+app.use('/university', universityRouter)
 
