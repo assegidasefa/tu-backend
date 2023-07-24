@@ -23,6 +23,7 @@ const User = sequelize.define(
     phoneNumber: {
       type: DataTypes.STRING,
       required: true,
+      unique:true
     },
     role: {
       type: DataTypes.STRING,

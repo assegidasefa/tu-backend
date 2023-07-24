@@ -8,6 +8,10 @@ export const getUserByIdService = (id) => {
   return User.findOne({ where: { user_id: id }, raw: true });
 };
 
+export const getUserByPhoneService = (phoneNumber) => {
+    return User.findOne({ where: { phoneNumber }, raw: true });
+  };
+
 export const updateUserService = (id, body) => {
   return User.update(body, { where: { user_id: id } });
 };
