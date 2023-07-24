@@ -22,6 +22,18 @@ const University = sequelize.define('university', {
         type: DataTypes.STRING,
         required: true
     },
+    university_logo_path:{
+        type:DataTypes.STRING,
+        
+    },
+    university_picture: {
+       type:DataTypes.BLOB
+    }, //BLOB data type for storing binary picture data
+
+    university_link:{
+        type:DataTypes.STRING,
+        
+    },
    
     },{
        timestamps:false,
