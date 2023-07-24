@@ -14,6 +14,7 @@ export const createUser = (req, res) => {
 // async operation
 
 const createUserHandler = async (body) => {
+  
   const resp = await createUserService(body);
   return resp;
 };
