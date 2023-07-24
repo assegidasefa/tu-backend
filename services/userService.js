@@ -18,6 +18,9 @@ export const deleteUserService = (id) => {
     return User.destroy({where:{user_id:id}})
   };
   
+  export const getUserByPhoneNumber = (phoneNumber) => {
+    return User.findOne( {where: { phoneNumber },raw:true})
+  };
   
 
 
