@@ -9,6 +9,7 @@ import {
   getUserByIdService,
   getUserByPhoneService,
   updateUserService,
+  updateUserpassword,
 } from "../services/userService.js";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
@@ -77,6 +78,18 @@ export const getAllUser = (req, res) => {
         .send({ success: false, error: "Something is Went wrong" });
     });
 };
+
+
+export const changePassword = (req, res) => {
+    const body = req.body
+    const {id} = req.user
+    changePasswordHandler(body,id).then((resp) => {
+      res.status(200).send(resp)
+    }).catch((err) => {
+      res.status(200).send({ success: false, error: "Something went worng" })
+    })
+  }
+  
 // async operation
 
 const createUserHandler = async (body) => {
@@ -117,3 +130,35 @@ const getAllUserHandler = async () => {
   const result = await getAllUserService();
   return result;
 };
+
+
+
+const changePasswordHandler = async (body,id) => {
+    const password = body.password
+    const ComfirmPassword = body.ComfirmPassword
+    const ExistingPassword = body.ExistingPassword
+    const user = await getUserByIdService(id);
+    const userPassword = user.password
+  
+    const isSame = await bcrypt.compare(ExistingPassword, userPassword)
+  
+    if (isSame) {
+      if (password === ComfirmPassword) {
+  
+  
+  
+        if (user) {
+          const newPassword = bcrypt.hashSync(password, 10);
+          await updateUserpassword(id, newPassword);
+          return { success: true, message: 'Successfully updated. ' };
+        } else {
+          return { success: false, message: 'Invalid Information' };
+        }
+      } else {
+        return { success: false, message: "Passwords did not match" }
+      }
+    } else {
+      return { success: false, error: "exsting passsword is incorrect!!" }
+    }
+  
+  }

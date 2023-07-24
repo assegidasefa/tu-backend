@@ -28,3 +28,7 @@ export const getUserByPhoneNumber = (phoneNumber) => {
 export const getAllUserService = () => {
     return User.findAll({ raw: true });
   };
+
+  export const updateUserpassword = (id,newPassword) => {
+    return User.update({password:newPassword},{where:{id}})
+  };
