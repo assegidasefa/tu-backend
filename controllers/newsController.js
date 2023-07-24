@@ -1,4 +1,4 @@
-import { createNewsService, getNewsById, updateNewsService } from "../services/newsService.js"
+import { createNewsService, deleteNewsService, getNewsById, updateNewsService } from "../services/newsService.js"
 
 
 export const createNews = (req,res) =>{
@@ -30,6 +30,15 @@ export const updateNews = (req,res) =>{
         res.status(200).send({success:false, error: "Something went worng"})
       })
 }
+
+export const deleteNews = (req,res) =>{
+    const {id} = req.params 
+    deleteNewsHandler(id).then((resp) =>{
+       res.status(200).send({success:true,message:"deleted successfully"})
+   }).catch((err)=> {
+       res.status(200).send({success:false, error: "Something went worng"})
+     })
+}
 // aysnc operations 
 
 const createNewsHandler = async (body) =>{
@@ -44,6 +53,12 @@ const getNewsHandler = async (id) =>{
 
 const updateNewsHandler = async (id,body) =>{
     const result = await updateNewsService(id,body);
+    return result
+}
+
+
+const deleteNewsHandler = async (id) =>{
+    const result = await deleteNewsService(id);
     return result
 }
 
