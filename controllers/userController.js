@@ -1,6 +1,8 @@
-import { isValidPhoneNumber } from "../helpers/validatePhoneNumber";
-import { createUserService } from "../services/userService";
+import { getCorrectPhoneNumber, isValidPhoneNumber } from "../helpers/validatePhoneNumber.js";
+import { createUserService } from "../services/userService.js";
 import bcrypt from 'bcrypt'
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 export const createUser = (req, res) => {
@@ -22,6 +24,8 @@ const createUserHandler = async (body) => {
       return { success: false, error: 'Incorrect Phone Number' }
     
     } 
+    body.user_id = uuidv4()
+
     body.phoneNumber = getCorrectPhoneNumber(body.phoneNumber)
     body.password = bcrypt.hashSync(body.password, 10);
 
