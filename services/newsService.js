@@ -14,6 +14,12 @@ export const updateNewsService = (id, body) => {
 };
 
 
+export const deleteNewsService = (id) => {
+  return News.destroy({where:{news_id:id}})
+};
+
+
+
 
 
 
